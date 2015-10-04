@@ -56,7 +56,15 @@ class MainPage(Handler):
 		art = self.request.get('art')
 
 		if title and art:
-			self.write('Thanks!')
+			# self.write('Thanks!')
+
+			# Create an instance 'a' of art object
+			a = Art(title=title, art=art)
+
+			# Store our new art object instance in the database
+			a.put()
+
+			self.redirect('/')
 		else:
 			error = "We need both, a title and an artwork!"
 			self.render_front(title=title, artwork=art, error=error)
