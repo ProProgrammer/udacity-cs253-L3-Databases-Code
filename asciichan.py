@@ -19,6 +19,18 @@ class Handler(webapp2.RequestHandler):
 	def render(self, template, **kw):
 		self.write(self.render_str(template, **kw))
 
+"""
+# Now, lets start adding the database
+# The way you define an entity in google app engine is to define a class.
+# This class inherits from db.Model
+# db.Model is something that's included from Google which is imported on the top as:
+"from google.appengine.ext import db"
+#  
+"""
+class Art(db.Model):
+	pass
+
+
 class MainPage(Handler):
 	def render_front(self, title="", artwork="", error=""):
 		"""
