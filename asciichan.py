@@ -45,7 +45,13 @@ class MainPage(Handler):
 		"""
 		This function is created to avoid code duplication as we are going to render form using "self.render" quite a few times
 		"""
-		self.render("front.html", title=title, artwork=artwork, error=error)
+
+		"""
+		Each time we render the front page, we get all the arts present in the database using the query as below (arts).
+		"""
+		arts = db.GqlQuery("SELECT * FROM Art ORDER BY created DESC")
+
+		self.render("front.html", title=title, artwork=artwork, error=error, arts=arts)
 
 	def get(self):
 		# self.render("front.html")
