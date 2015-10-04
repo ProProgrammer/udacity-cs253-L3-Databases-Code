@@ -28,7 +28,16 @@ class Handler(webapp2.RequestHandler):
 #  
 """
 class Art(db.Model):
-	pass
+
+	"""
+	# This is in the database module from Google
+	# And this is how you say something is a particular type 
+	# required=True sets a constraint on the database, it means that if we try to make an instance of art without giving it a title, it would give us an exception, python won't let us do that.
+	# auto_now_add=True (in 'created' below) - it automatically, when we create an instance of art, will set the created to be the current time.
+	"""
+	title = db.StringProperty(required=True)
+	art = db.TextProperty(required=True)
+	created = db.DateTimeProperty(auto_now_add = True)
 
 
 class MainPage(Handler):
